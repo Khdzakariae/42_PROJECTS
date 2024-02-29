@@ -4,11 +4,11 @@ LIBFT = libft/libft.a
 all: 
 	@make -C libft
 	@cc $(FLAGS) sever.c $(LIBFT) -o server
-	@echo  "server done [ ok ]" 
+	@echo  "server done [ ✅ ]" 
 	@cc $(FLAGS) cliient.c $(LIBFT) -o client
-	@echo  "client done [ ok ]" 
+	@echo  "client done [ ✅ ]" 
 clean:
-	make fclean -C libft
+	@make fclean -C libft
 	@rm -f  server
 	@rm -f  client
 

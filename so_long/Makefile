@@ -25,7 +25,7 @@ $(PRINTF) :
 	@$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 
 $(NAME): $(OBJ)
-	@$(CC) $(OBJ) $(LIBFT) $(PRINTF)  -lmlx -framework OpenGL -framework AppKit  -o $(NAME)
+	@$(CC) $(OBJ) $(LIBFT) $(PRINTF)  -I /usr/X11/include -g -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit -o $(NAME)
 	@echo "SO_LONG DONE [🤡]"
 clean:
 	@echo "CLEAN DONE [✅]"
