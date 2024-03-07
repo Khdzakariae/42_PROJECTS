@@ -1,6 +1,6 @@
 #include "minitalk.h"
 
-void	ft_send_bits(int pid, char c)
+void	ft_bits(int pid, char c)
 {
 	int		i;
 	char	tmp;
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 	i = 0;
 	if (ac != 3)
 	{
-		ft_putstr_fd(ANSI_COLOR_RED"PLEASE ENTER THE SERVER PID AND THE MESSAGE TO SEND", 2);
+		ft_putstr_fd(ANSI_COLOR_RED"PID | STRING !!", 2);
 		return (1);
 	}
 	pid = atoi(av[1]);
@@ -36,8 +36,5 @@ int	main(int ac, char **av)
         exit(1);
     }
 	while (av[2][i])
-		ft_send_bits(pid, av[2][i++]);
+		ft_bits(pid, av[2][i++]);
 }
-
-
-

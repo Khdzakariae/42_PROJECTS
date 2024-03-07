@@ -17,7 +17,7 @@ int	main(void)
 {
 	signal(SIGUSR1, handler);
 	signal(SIGUSR2, handler);
-	printf("THE PID OF THE SERVER is %d\n", getpid());
+	printf("THE PID THE SERVER IS %d\n", getpid());
 	while (1)
 	{
 	}
