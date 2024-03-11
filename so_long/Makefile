@@ -2,6 +2,15 @@
 FLAGS = -Wall -Wextra -Werror 
 NAME = so_long_bonus
 
+
+BANNER = \
+"  __        __   _                            _       _     _ \n"\
+"  \ \      / /__| | ___ ___  _ __ ___   ___  | |_   _| |__ | |\n"\
+"   \ \ /\ / / _ \ |/ __/ _ \| '_ \` _ \ / _ \ | | | | | '_ \| |\n"\
+"    \ V  V /  __/ | (_| (_) | | | | | |  __/ | |_| | | |_) |_|\n"\
+"     \_/\_/ \___|_|\___\___/|_| |_| |_|\___|  \__,_| |_.__/(_)  \n"\
+" "
+
 SRC_1_2	 =	so_long.c assists/itoa.c assists/assists2.c assists/assists1.c prasin/parssin.c prasin/parssin2.c \
 			prasin/parssin3.c  animation/animation.c key_press/key_press.c  prasin/parssin4.c 
 LIBFT = libft/libft.a
@@ -9,11 +18,14 @@ PRINTF = ft_printf/libftprintf.a
 
 OBJ = $(SRC_1_2:.c=.o)
 
-all: 
+all:
 	@make -C Mandatory
 	@mv Mandatory/so_long .
+	@echo $(BANNER)
+
 
 bonus: $(LIBFT) $(PRINTF) $(NAME)
+	@echo $(BANNER)
 
 $(LIBFT) :
 	@make -C libft

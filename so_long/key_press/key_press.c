@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 17:51:05 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/02/26 13:48:36 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/03/11 12:13:56 by useraccount      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	handle_destroy_notify(t_data *data)
 	write(1, ANSI_COLOR_YELLOW "THE GMAE IS OVER", 21);
 	mlx_destroy_window(data->mlx, data->win);
 	free_(data->map);
+	system("leaks -q so_long_bonus");
 	exit(1);
 }
 
@@ -27,6 +28,7 @@ int	key_hook(int keysym, t_data *data)
 		write(1, ANSI_COLOR_YELLOW "THE GMAE IS OVER", 21);
 		mlx_destroy_window(data->mlx, data->win);
 		free_(data->map);
+		system("leaks -q so_long_bonus");
 		exit(1);
 	}
 	if (keysym == 123 || keysym == 0)

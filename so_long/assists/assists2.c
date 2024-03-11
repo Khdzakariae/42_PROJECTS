@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assists2.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 22:13:05 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/02/26 13:48:12 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/03/11 12:13:56 by useraccount      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	game_over(t_data *data, char target)
 	ft_putendl_fd(ANSI_COLOR_RED "GAME OVER !", 2);
 	mlx_destroy_window(data->mlx, data->win);
 	free_(data->map);
+	system("leaks -q so_long_bonus");
 	exit(EXIT_FAILURE);
 }
 
@@ -69,6 +70,7 @@ void	booyah(t_data *data, char target)
 	write(1, ANSI_COLOR_GREEN "BRAVOOOOO !!", 18);
 	mlx_destroy_window(data->mlx, data->win);
 	free_(data->map);
+	system("leaks -q so_long_bonus");
 	exit(EXIT_SUCCESS);
 }
 
