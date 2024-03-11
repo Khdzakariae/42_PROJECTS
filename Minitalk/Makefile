@@ -8,10 +8,11 @@ all:
 	@echo  "server done [ ok ]" 
 	@cc $(FLAGS) Mandatory/cliient.c $(LIBFT) -o client
 	@echo  "client done [ ok ]"
-Bonus:
-	@cc $(FLAGS) bonus/client_bonus.c $(LIBFT) -o client_bonus
+bonus:
+	@make -C Mandatory/libft
+	@cc $(FLAGS) bonus_part/client_bonus.c $(LIBFT) -o client_bonus
 	@echo  "client done [ ok ]" 
-	@cc $(FLAGS) bonus/server_bonuc.c $(LIBFT) -o server_bonus
+	@cc $(FLAGS) bonus_part/server_bonuc.c $(LIBFT) -o server_bonus
 	@echo  "server done [ ok ]" 
 
 clean:

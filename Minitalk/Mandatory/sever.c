@@ -2,8 +2,9 @@
 
 void	handler(int sig)
 {
-    static int  tmp1 = 0;
-	char tmp;
+	static int	tmp1 = 0;
+	char		tmp;
+
 	tmp = tmp << 1 | (sig == SIGUSR1);
 	tmp1++;
 	if (tmp1 == 8)
@@ -21,5 +22,4 @@ int	main(void)
 	while (1)
 	{
 	}
-	
 }

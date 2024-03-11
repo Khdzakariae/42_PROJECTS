@@ -26,18 +26,15 @@ int	main(int ac, char **av)
 	i = 0;
 	if (ac != 3)
 	{
-		ft_putstr_fd(ANSI_COLOR_RED"PID | STRING !!", 2);
+		ft_putstr_fd(ANSI_COLOR_RED "PID | STRING !!", 2);
 		return (1);
 	}
 	pid = atoi(av[1]);
-    if (pid <= 0)
-    {
-		ft_putstr_fd(ANSI_COLOR_RED"ERROR", 2);
-        exit(1);
-    }
+	if (pid <= 0)
+	{
+		ft_putstr_fd(ANSI_COLOR_RED "ERROR", 2);
+		exit(1);
+	}
 	while (av[2][i])
 		ft_bits(pid, av[2][i++]);
 }
-
-
-
