@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/17 14:31:03 by zel-khad          #+#    #+#             */
+/*   Updated: 2024/03/17 14:38:50 by zel-khad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "minitalk.h"
 
 void	ft_envoyan(int sig)
 {
 	if (sig == SIGUSR2)
-		ft_putstr_fd(ANSI_BACKGROUND_GREEN ANSI_COLOR_BLUE"message envoyer ✅.\n", 1);
+		ft_putstr_fd(ANSI_BACKGROUND_GREEN "message envoyer ✅.\n",
+			1);
 }
 
 void	ft_bits(int pid, char c)
@@ -26,11 +39,10 @@ void	ft_bits(int pid, char c)
 
 int	main(int ac, char **av)
 {
-	int i;
-	int pid;
+	int	i;
+	int	pid;
 
 	i = 0;
-
 	if (ac == 3)
 	{
 		pid = atoi(av[1]);
