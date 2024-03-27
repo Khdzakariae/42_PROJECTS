@@ -1,14 +1,18 @@
 
 NAME = push_swap
 
-FLAGS = -Wall -Wextra -Werror
+# FLAGS = -Wall -Wextra -Werror
+
+
+SRC = push_swap.c parcin/parisin1.c parcin/errores.c
+
 LIBFT = libft/libft.a
 FT_PRINTF = ft_printf/libftprintf.a
 
 all: lib $(NAME)
 	@echo  "push_swap done [ ✅ ]"  
 
-$(NAME) : push_swap.c
+$(NAME) : $(SRC)
 	@cc $^ $(FLAGS)  $(LIBFT) $(FT_PRINTF) -o push_swap
 
 lib :
