@@ -84,14 +84,22 @@ void _reversse(t_data **head)
     }
     *head = prev;
 }
+//this fonction print list with recurjen
+void rev_print(t_data *head)
+{
+    if (!head)
+        return;
+    rev_print(head->next);
+    printf("%d\n", head->cont);
+}
+//this fonction print rev the list with recurjen
 void r_print(t_data *head)
 {
-    printf("%d\n", head->cont);
-    if (head->next == NULL)
+    if (!head)
         return;
+    printf("%d\n", head->cont);
     r_print(head->next);
 }
-
 void add_node(t_data **head, int data)
 {
     t_data *tmp = malloc(sizeof(t_data));
