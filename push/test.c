@@ -8,6 +8,29 @@ typedef struct s_data
     struct s_data *next;
 }           t_data;
 
+
+
+typedef struct s_list
+{
+    int data;
+    struct s_list *next;
+    struct s_list *prev;
+}               t_list;
+
+
+
+// void _add_double(t_list **data, int data)
+// {
+//     t_list *temp = malloc(sizeof(t_data));
+//     temp->data = data;
+//     temp->next = NULL;
+//     temp->prev = NULL;
+//     if(*head == NULL)
+//     {
+//         *head = temp;
+//         return;
+//     }
+// }
 void _print(t_data *data)
 {
     int tmp = 0;
@@ -70,21 +93,6 @@ void add_list(t_data **head, int dada, int nb)
     temp2->next = temp;
 }
 
-void _reversse(t_data **head)
-{
-    t_data *curren, *prev ,*next;
-    curren = *head;
-    prev = NULL;
-    while(curren != NULL)
-    {
-        next = curren->next;
-        curren->next = prev;
-        prev = curren;
-        curren  = next;
-    }
-    *head = prev;
-}
-//this fonction print list with recurjen
 void rev_print(t_data *head)
 {
     if (!head)
@@ -100,6 +108,41 @@ void r_print(t_data *head)
     printf("%d\n", head->cont);
     r_print(head->next);
 }
+
+
+
+void rev_ol(t_data **head)
+{
+    t_data *p;
+    if (p == NULL)
+    {
+        puts("==========\n");
+        *head = p;
+        return;
+    }
+    rev_ol(&p->next);
+    t_data *q = p->next;
+    q->next = p;
+    p->next = NULL;
+}
+
+void _reversse(t_data **head)
+{
+    t_data *curren, *prev ,*next;
+    curren = *head;
+    prev = NULL;
+    while(curren != NULL)
+    {
+        next = curren->next;
+        curren->next = prev;
+        prev = curren;
+        curren  = next;
+    }
+    *head = prev;
+}
+//this fonction print list with recurjen
+
+
 void add_node(t_data **head, int data)
 {
     t_data *tmp = malloc(sizeof(t_data));
@@ -115,6 +158,8 @@ void add_node(t_data **head, int data)
         temp1->next = tmp;
     }
 }
+
+
 int main (int ac , char **av)
 {
     int del;
@@ -138,7 +183,10 @@ int main (int ac , char **av)
         // _print(head);
         // puts("==========  appres reversse ===========\n");
         // _reversse(&head);
-        // _print(head);
-        r_print(head);
+        _print(head);
+        puts("==============\n");
+        rev_ol(&head);
+        _print(head);
+        // r_print(head);
     }
 }
