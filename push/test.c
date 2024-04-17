@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -83,27 +84,53 @@ void _reversse(t_data **head)
     }
     *head = prev;
 }
+void r_print(t_data *head)
+{
+    printf("%d\n", head->cont);
+    if (head->next == NULL)
+        return;
+    r_print(head->next);
+}
+
+void add_node(t_data **head, int data)
+{
+    t_data *tmp = malloc(sizeof(t_data));
+    tmp->cont = data;
+    tmp->next = NULL;
+    if (*head == NULL)
+        *head = tmp;
+    else
+    {
+        t_data *temp1  = *head;
+        while(temp1->next != NULL)
+            temp1  = temp1->next;
+        temp1->next = tmp;
+    }
+}
 int main (int ac , char **av)
 {
     int del;
     if (ac > 1)
     {
         t_data *head;
+ 
         int i = 1;
         while(av[i])
         {
             int nbr = atoi(av[i]);
-            newlist(&head, nbr);
+            // newlist(&head, nbr);
+            add_node(&head, nbr);
             i++;
         }
-        puts("la position qui te peut delete est : ");
-        scanf("%d",&del);
-        puts("[ ok ]");
-        // add_list(&head, 100, 3);
-        _free( del,&head);
+        // puts("la position qui te peut delete est : ");
+        // scanf("%d",&del);
+        // puts("[ ok ]");
+        // add_list(&head, 100, 49);
+        // _free( del,&head);
         // _print(head);
         // puts("==========  appres reversse ===========\n");
         // _reversse(&head);
-        _print(head);
+        // _print(head);
+        r_print(head);
     }
 }
