@@ -3,6 +3,15 @@
 #include <stdlib.h>
 
 
+// void sa(t_stack **a)
+// {
+//     t_stack *temp;
+//     temp = *a->next;
+//     *a->next = a->next->next;
+
+// }
+
+
 typedef struct s_stack
 {
     int data;
@@ -36,9 +45,16 @@ void print(t_stack *b)
 
 int main ()
 {
+    t_stack *a = NULL;
     t_stack *b = NULL;
+
     push_b(&b, 5);
     push_b(&b, 4);
+    push_b(&b, 7);
+    push_b(&b, 10);
+    push_b(&b, 20);
+    push_b(&b, 30);
+
     pop_b(&b);
     print(b);
 }

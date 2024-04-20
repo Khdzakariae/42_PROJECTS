@@ -79,16 +79,15 @@ void _print(t_list *data)
     }
     printf("the size of list is |%d|\n", tmp);
 }
-// void newlist(t_data **head, int nbr)
-// {
-//     t_data *temp  = malloc(sizeof(t_data));
-//     temp->cont = nbr;
-//     temp->next = NULL;
-//     if (*head != NULL)
-//         temp->next = *head;
-//     *head = temp;
-
-// }
+void newlist(t_data **head, int nbr)
+{
+    t_data *temp  = malloc(sizeof(t_data));
+    temp->cont = nbr;
+    temp->next = NULL;
+    if (*head != NULL)
+        temp->next = *head;
+    *head = temp;
+}
 
 // void _free(int pos, t_data **head)
 // {
@@ -196,21 +195,21 @@ void r_print(t_list *head)
 // //this fonction print list with recurjen
 
 
-// void add_node(t_data **head, int data)
-// {
-//     t_data *tmp = malloc(sizeof(t_data));
-//     tmp->cont = data;
-//     tmp->next = NULL;
-//     if (*head == NULL)
-//         *head = tmp;
-//     else
-//     {
-//         t_data *temp1  = *head;
-//         while(temp1->next != NULL)
-//             temp1  = temp1->next;
-//         temp1->next = tmp;
-//     }
-// }
+void add_node(t_data **head, int data)
+{
+    t_data *tmp = malloc(sizeof(t_data));
+    tmp->cont = data;
+    tmp->next = NULL;
+    if (*head == NULL)
+        *head = tmp;
+    else
+    {
+        t_data *temp1  = *head;
+        while(temp1->next != NULL)
+            temp1  = temp1->next;
+        temp1->next = tmp;
+    }
+}
 
 
 int main (int ac , char **av)
