@@ -2,7 +2,7 @@ NAME = philo
 
 FLAGS = -Wall -Wextra -Werror
 
-SRC_PHILO = sources/philosophers.c sources/ft_atoi.c  \
+SRC_PHILO = sources/philosophers.c sources/ft_atoi.c  sources/argument_parser.c \
 
 
 all: $(NAME)

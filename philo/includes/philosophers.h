@@ -6,7 +6,7 @@
 /*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:33 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/14 11:47:19 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/14 11:54:46 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ typedef struct t_list
 }			t_data;
 
 long		ft_atoi(char *str);
+bool		cheack(t_data *data, char **av);
 
 #endif
