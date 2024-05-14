@@ -46,7 +46,7 @@ long	ft_atoi(char *str)
 	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
 		i++;
 	if (str[i] == '-')
-		return(55147483647);
+		return (55147483647);
 	else if (str[i] == '+')
 		i++;
 	str += i;

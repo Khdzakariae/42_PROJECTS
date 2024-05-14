@@ -11,22 +11,21 @@
 /* ************************************************************************** */
 
 #ifndef PHILOSOPHERS_H
-#define PHILOSOPHERS_H
+# define PHILOSOPHERS_H
 
-#include <stdio.h>
-#include <stdbool.h>
+# include <stdbool.h>
+# include <stdio.h>
 
 # define INT_MAX 2147483647
 
 typedef struct t_list
 {
-        long number_of_philosophers;
-        long time_to_die;
-        long time_to_eat;
-        long time_to_sleep;
-}               t_data;
+	long	number_of_philosophers;
+	long	time_to_die;
+	long	time_to_eat;
+	long	time_to_sleep;
+}			t_data;
 
-long	ft_atoi(char *str);
-
+long		ft_atoi(char *str);
 
 #endif
