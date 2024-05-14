@@ -2,7 +2,7 @@ NAME = philo
 
 FLAGS = -Wall -Wextra -Werror
 
-SRC_PHILO = philo_main.c
+SRC_PHILO = sources/philosophers.c sources/ft_atoi.c  \
 
 
 all: $(NAME)
