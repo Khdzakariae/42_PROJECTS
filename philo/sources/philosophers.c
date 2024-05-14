@@ -6,7 +6,7 @@
 /*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:01 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/14 11:59:59 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:34:27 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ int	main(int ac, char **av)
 		{
 			printf("ERROR");
 			return (1);
+		}
+		else
+		{
+			
+			printf("number_of_philosophers is |%ld|\n", data.number_of_philosophers);
+			printf("time_to_die is |%ld|\n", data.time_to_die);
+			printf("time_to_eat is |%ld|\n", data.time_to_eat);
+			printf("time_to_sleep is |%ld|\n", data.time_to_sleep);			
 		}
 	}
 	else
