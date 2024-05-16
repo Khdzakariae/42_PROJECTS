@@ -6,7 +6,7 @@
 /*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:33 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/14 11:54:46 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/15 18:42:58 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 # include <stdbool.h>
 # include <stdio.h>
+#include <pthread.h>
+#include <stdlib.h>
+# include <sys/time.h>
+# include <time.h>
+# include <unistd.h>
 
 # define INT_MAX 2147483647
 
