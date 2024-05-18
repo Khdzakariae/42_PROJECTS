@@ -6,7 +6,7 @@
 /*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:01 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/18 17:20:12 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/18 18:49:53 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 void* philosophers(void *phil) 
 {
     t_philo *philo = (t_philo *)phil;
+	pthread_mutex_lock(&philo->first_fork.forks);
     printf("Philosopher %d is thinking\n", philo->id);
-	
+	pthread_mutex_unlock(&philo->first_fork.forks);
     return NULL;
 }
 
-
-
-int main(int ac, char **av) {
+int main(int ac, char **av)
+{
 	t_data data;
 	int i = 0;
 	
@@ -35,11 +35,13 @@ int main(int ac, char **av) {
 		return (1);
 	}
     t_fork forks;
-    pthread_mutex_init(&forks.forks, NULL);
     pthread_t philosof[data.number_of_philosophers];
     t_philo *philo = malloc(data.number_of_philosophers * sizeof(t_philo));
     if (philo == NULL) 
 	{
+    	pthread_mutex_init(&philo->first_fork.forks, NULL);
+    	pthread_mutex_init(&philo->second_fork.forks, NULL);
+
         printf("Error: Memory allocation failed\n");
         return 1;
     }
