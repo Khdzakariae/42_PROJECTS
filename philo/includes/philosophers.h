@@ -6,7 +6,7 @@
 /*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:33 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/16 13:42:24 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/18 09:33:43 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_list
 typedef struct s_forks
 {
 	pthread_mutex_t	forks;
-	int				id; // debugging	
+	int				id;	
 }	t_fork;
 
 typedef struct s_philo

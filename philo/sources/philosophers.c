@@ -6,7 +6,7 @@
 /*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:01 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/16 13:24:41 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/18 09:53:17 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,14 @@ int	main(int ac, char **av)
 		}
 		else
 		{
-			int *res = 0;
-			pthread_t t[data.number_of_philosophers];
+			pthread_t philosof[data.number_of_philosophers];
 			int i = 0;
 			pthread_mutex_init(&mutex, NULL);
 			while (i < data.number_of_philosophers)
 			{
-				pthread_create(&t[i], NULL, generete ,NULL);
-				printf("thread number %d is rung \n", i);
-				pthread_join(t[i], (void**)&res);
-				printf("thread number %d is fenish \n", i);
+				pthread_create(&philosof[i], NULL, generete ,NULL);
 				i++;
 			}
-			printf("%d\n", *res);
-			
-			// printf("number_of_philosophers is |%ld|\n", data.number_of_philosophers);
-			// printf("time_to_die is |%ld|\n", data.time_to_die);
-			// printf("time_to_eat is |%ld|\n", data.time_to_eat);
-			// printf("time_to_sleep is |%ld|\n", data.time_to_sleep);			
 		}
 	}
 	else
