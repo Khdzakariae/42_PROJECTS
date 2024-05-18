@@ -6,7 +6,7 @@
 /*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:33 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/18 09:33:43 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/18 15:54:02 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ typedef struct s_philo
 
 long		ft_atoi(char *str);
 bool		cheack(t_data *data, char **av);
+void eating(int *phil);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 18:41:23 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/16 10:15:36 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/18 15:05:39 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,9 @@ bool	timing(void)
 		return (false);
 	start_time = 0;
 	return (true);
+}
+
+void eating(int *phil)
+{
+	printf("timestamp_in_ms %d is eating\n", *phil);
 }
