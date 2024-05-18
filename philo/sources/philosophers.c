@@ -6,7 +6,7 @@
 /*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:01 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/15 18:48:53 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/16 13:24:41 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@ int *cont = 0;
 pthread_mutex_t mutex;
 void* generete()
 {
-	
+
 	int value = (rand() % 6 + 1);
 	int *result = malloc(sizeof(int));
 	*result = value;
