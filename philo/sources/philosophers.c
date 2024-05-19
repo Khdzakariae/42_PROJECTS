@@ -6,7 +6,7 @@
 /*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:01 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/19 21:56:46 by useraccount      ###   ########.fr       */
+/*   Updated: 2024/05/19 21:57:53 by useraccount      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int main(int argc, char **argv)
         if (philo[j].id == 0)
         {
             philo[j].first_fork = &forks[0];
-            philo[j].second_fork = &forks[philo->data->number_of_philosophers - 1] - 1;
+            philo[j].second_fork = &forks[philo->data->number_of_philosophers - 1];
         }
         else if  (philo[j].id % 2)
         {
