@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 18:41:23 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/18 15:05:39 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/19 21:38:15 by useraccount      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,37 @@ long long	the_time(void)
 	return (time_.tv_sec * 1000LL + time_.tv_usec / 1000);
 }
 
-bool	timing(void)
+void print_msg(int flag, t_philo *philo)
 {
-	static clock_t	start_time;
-	clock_t			current_time;
+	long long time =  the_time() - philo->data->start_time;
 
-	current_time = the_time();
-	if (start_time == 0)
-		return (start_time = current_time, true);
-	else if ((current_time - start_time) <= 400)
-		return (false);
-	start_time = 0;
-	return (true);
+	if (flag == 0)
+		printf("%lld\t%ld has taken a fork \n",time , philo->id + 1);
+	else if (flag == 1)
+		printf("%lld\t%ld is sleeping \n",time , philo->id + 1);
+	else if (flag == 2)
+		printf("%lld\t%ld is thinking \n",time , philo->id + 1);
+	else if (flag == 3)
+		printf("%lld\t%ld died \n",time , philo->id + 1);	
+	else if (flag == 4)
+		printf("%lld\t%ld is eating \n",time , philo->id + 1);	
+		
 }
 
-void eating(int *phil)
+void slepeng_(size_t time)
 {
-	printf("timestamp_in_ms %d is eating\n", *phil);
+	size_t current_time = the_time();
+	while ((the_time() - current_time) < time)
+		usleep(500);
+}
+
+void sleping(t_philo *philo)
+{
+	print_msg(1, philo);
+	slepeng_(philo->data->time_to_sleep);
+}
+
+void thinking(t_philo *philo)
+{
+	print_msg(2, philo);
 }

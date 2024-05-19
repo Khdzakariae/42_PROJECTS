@@ -1,0 +1,30 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     philo
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _philosophers, symObjAddr: 0x0, symBinAddr: 0x1000009C4, symSize: 0x7C }
+  - { offsetInCU: 0x3B, offset: 0x3B, size: 0x8, addend: 0x0, symName: _.str, symObjAddr: 0x1120, symBinAddr: 0x1000037A0, symSize: 0x0 }
+  - { offsetInCU: 0x66, offset: 0x66, size: 0x8, addend: 0x0, symName: _.str.1, symObjAddr: 0x1160, symBinAddr: 0x1000037E0, symSize: 0x0 }
+  - { offsetInCU: 0x83, offset: 0x83, size: 0x8, addend: 0x0, symName: _.str.2, symObjAddr: 0x11E0, symBinAddr: 0x100003860, symSize: 0x0 }
+  - { offsetInCU: 0xA0, offset: 0xA0, size: 0x8, addend: 0x0, symName: _.str.3, symObjAddr: 0x1200, symBinAddr: 0x100003880, symSize: 0x0 }
+  - { offsetInCU: 0x27D, offset: 0x27D, size: 0x8, addend: 0x0, symName: _philosophers, symObjAddr: 0x0, symBinAddr: 0x1000009C4, symSize: 0x7C }
+  - { offsetInCU: 0x2C1, offset: 0x2C1, size: 0x8, addend: 0x0, symName: _eating, symObjAddr: 0x7C, symBinAddr: 0x100000A40, symSize: 0x250 }
+  - { offsetInCU: 0x2E5, offset: 0x2E5, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x2CC, symBinAddr: 0x100000C90, symSize: 0xDA4 }
+  - { offsetInCU: 0x26, offset: 0x414, size: 0x8, addend: 0x0, symName: _ft_isdigit, symObjAddr: 0x0, symBinAddr: 0x100001ACC, symSize: 0x50 }
+  - { offsetInCU: 0x33, offset: 0x421, size: 0x8, addend: 0x0, symName: _ft_isdigit, symObjAddr: 0x0, symBinAddr: 0x100001ACC, symSize: 0x50 }
+  - { offsetInCU: 0x5B, offset: 0x449, size: 0x8, addend: 0x0, symName: _generating_number, symObjAddr: 0x50, symBinAddr: 0x100001B1C, symSize: 0x3C0 }
+  - { offsetInCU: 0x8D, offset: 0x47B, size: 0x8, addend: 0x0, symName: _ft_atoi, symObjAddr: 0x410, symBinAddr: 0x100001EDC, symSize: 0xA8C }
+  - { offsetInCU: 0x26, offset: 0x521, size: 0x8, addend: 0x0, symName: _cheack, symObjAddr: 0x0, symBinAddr: 0x100002980, symSize: 0x508 }
+  - { offsetInCU: 0x33, offset: 0x52E, size: 0x8, addend: 0x0, symName: _cheack, symObjAddr: 0x0, symBinAddr: 0x100002980, symSize: 0x508 }
+  - { offsetInCU: 0x26, offset: 0x605, size: 0x8, addend: 0x0, symName: _the_time, symObjAddr: 0x0, symBinAddr: 0x100002EA0, symSize: 0x288 }
+  - { offsetInCU: 0x3B, offset: 0x61A, size: 0x8, addend: 0x0, symName: _.str, symObjAddr: 0x7C0, symBinAddr: 0x1000038E0, symSize: 0x0 }
+  - { offsetInCU: 0x66, offset: 0x645, size: 0x8, addend: 0x0, symName: _.str.1, symObjAddr: 0x800, symBinAddr: 0x100003920, symSize: 0x0 }
+  - { offsetInCU: 0x83, offset: 0x662, size: 0x8, addend: 0x0, symName: _.str.2, symObjAddr: 0x840, symBinAddr: 0x100003960, symSize: 0x0 }
+  - { offsetInCU: 0x94, offset: 0x673, size: 0x8, addend: 0x0, symName: _.str.3, symObjAddr: 0x880, symBinAddr: 0x1000039A0, symSize: 0x0 }
+  - { offsetInCU: 0xB1, offset: 0x690, size: 0x8, addend: 0x0, symName: _.str.4, symObjAddr: 0x8A0, symBinAddr: 0x1000039C0, symSize: 0x0 }
+  - { offsetInCU: 0xC7, offset: 0x6A6, size: 0x8, addend: 0x0, symName: _the_time, symObjAddr: 0x0, symBinAddr: 0x100002EA0, symSize: 0x288 }
+  - { offsetInCU: 0xF3, offset: 0x6D2, size: 0x8, addend: 0x0, symName: _print_msg, symObjAddr: 0x288, symBinAddr: 0x100003128, symSize: 0x350 }
+  - { offsetInCU: 0x133, offset: 0x712, size: 0x8, addend: 0x0, symName: _slepeng_, symObjAddr: 0x5D8, symBinAddr: 0x100003478, symSize: 0x54 }
+  - { offsetInCU: 0x165, offset: 0x744, size: 0x8, addend: 0x0, symName: _sleping, symObjAddr: 0x62C, symBinAddr: 0x1000034CC, symSize: 0xB8 }
+  - { offsetInCU: 0x189, offset: 0x768, size: 0x8, addend: 0x0, symName: _thinking, symObjAddr: 0x6E4, symBinAddr: 0x100003584, symSize: 0x28 }
+...

@@ -3,37 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:01 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/19 14:11:53 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/19 21:56:46 by useraccount      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-
-void* philosophers(void *phil) 
+void *philosophers(void *phil)
 {
     t_philo *philo = (t_philo *)phil;
     t_data *data = philo->data;
+    eating(philo);
+    // sleping(philo);
+    // thinking(philo);
+    return(NULL);
+}
 
-
+void eating(t_philo *philo) 
+{
     pthread_mutex_lock(&philo->first_fork->forks);
-    printf("Fork %d is locked\n", philo->first_fork->id + 1);
+    print_msg(0, philo);
     pthread_mutex_lock(&philo->second_fork->forks);
-    printf("Fork %d is locked\n", philo->second_fork->id + 1);
-
-
-    printf("Philosopher %ld is eating\n", philo->id + 1);
-
-
+    print_msg(0, philo);
+    print_msg(4, philo);
+    sleep(1);
     pthread_mutex_unlock(&philo->second_fork->forks);
-    printf("Fork %d is unlocked\n", philo->second_fork->id + 1);
+    printf("%lld\t%d fork down\n", the_time() - philo->data->start_time, philo->id);
     pthread_mutex_unlock(&philo->first_fork->forks);
-    printf("Fork %d is unlocked\n", philo->first_fork->id + 1);
-
-    return NULL;
 }
 
 int main(int argc, char **argv) 
@@ -49,6 +48,8 @@ int main(int argc, char **argv)
         printf("ERROR\n");
         return 1;
     }
+    
+    data.start_time = the_time();
 
     t_fork *forks = malloc(data.number_of_philosophers * sizeof(t_fork));
     if (forks == NULL) {
@@ -93,24 +94,21 @@ int main(int argc, char **argv)
     {
         philo[j].id = j ;
         philo[j].data = &data;
+
         if (philo[j].id == 0)
         {
-
-            philo[j].first_fork = &forks[j];
-            philo[j].second_fork = &forks[philo->data->number_of_philosophers] - 1;
+            philo[j].first_fork = &forks[0];
+            philo[j].second_fork = &forks[philo->data->number_of_philosophers - 1] - 1;
         }
-        else if  (philo[j].id % 2 != 0)
+        else if  (philo[j].id % 2)
         {
-        
-            philo[j].first_fork = &forks[j + 1];
+            philo[j].first_fork = &forks[j - 1];
             philo[j].second_fork = &forks[j];
         }
         else if (philo[j].id % 2 == 0)
         {
-
-
             philo[j].first_fork = &forks[j];
-            philo[j].second_fork = &forks[j + 1];
+            philo[j].second_fork = &forks[j - 1];
         }
 
     }
@@ -119,6 +117,7 @@ int main(int argc, char **argv)
     i = 0;
  	while (i < data.number_of_philosophers)
 	{
+        
         pthread_create(&philosophers_threads[i], NULL, philosophers, (void *)&philo[i]);
 		i++;
 	}
