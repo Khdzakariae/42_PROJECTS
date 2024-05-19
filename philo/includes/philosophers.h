@@ -6,7 +6,7 @@
 /*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:33 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/19 09:44:05 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/19 14:07:10 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_forks
 typedef struct s_philo
 {
 	pthread_t	thread_philo;
-	int	id;
+	long		id;
 	t_data		*data;
 	t_fork		*first_fork;
 	t_fork		*second_fork;
