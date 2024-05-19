@@ -3,36 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
+/*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:01 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/19 21:57:53 by useraccount      ###   ########.fr       */
+/*   Updated: 2024/05/19 22:30:03 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
-void *philosophers(void *phil)
+void *philosophers(t_philo *philo)
 {
-    t_philo *philo = (t_philo *)phil;
-    t_data *data = philo->data;
-    eating(philo);
+    long long time =  the_time() - philo->data->start_time;
+
+    pthread_mutex_lock(&philo->first_fork->forks);
+	printf("%lld\t%ld has taken a fork \n",the_time() - philo->data->start_time , philo->id);
+    // print_msg(0, philo);
+    pthread_mutex_lock(&philo->second_fork->forks);
+	printf("%lld\t%ld has taken a fork \n",the_time() - philo->data->start_time , philo->id);
+    // print_msg(0, philo);
+    // print_msg(4, philo);
+	printf("%lld\t%ld is eating \n",the_time() - philo->data->start_time , philo->id);	
+    usleep(philo->data->time_to_eat * 1000);
+    pthread_mutex_unlock(&philo->second_fork->forks);
+    pthread_mutex_unlock(&philo->first_fork->forks);
     // sleping(philo);
     // thinking(philo);
     return(NULL);
-}
-
-void eating(t_philo *philo) 
-{
-    pthread_mutex_lock(&philo->first_fork->forks);
-    print_msg(0, philo);
-    pthread_mutex_lock(&philo->second_fork->forks);
-    print_msg(0, philo);
-    print_msg(4, philo);
-    sleep(1);
-    pthread_mutex_unlock(&philo->second_fork->forks);
-    printf("%lld\t%d fork down\n", the_time() - philo->data->start_time, philo->id);
-    pthread_mutex_unlock(&philo->first_fork->forks);
 }
 
 int main(int argc, char **argv) 
@@ -48,8 +45,6 @@ int main(int argc, char **argv)
         printf("ERROR\n");
         return 1;
     }
-    
-    data.start_time = the_time();
 
     t_fork *forks = malloc(data.number_of_philosophers * sizeof(t_fork));
     if (forks == NULL) {
@@ -112,16 +107,15 @@ int main(int argc, char **argv)
         }
 
     }
+    data.start_time = the_time();
 
     // Create philosopher threads
     i = 0;
  	while (i < data.number_of_philosophers)
 	{
-        
-        pthread_create(&philosophers_threads[i], NULL, philosophers, (void *)&philo[i]);
+        pthread_create(&philosophers_threads[i], NULL, (void *)philosophers, &philo[i]);
 		i++;
 	}
-
 	 i = 0;
 	 while (i < data.number_of_philosophers)
 	 {

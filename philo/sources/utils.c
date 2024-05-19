@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
+/*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 18:41:23 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/19 21:59:09 by useraccount      ###   ########.fr       */
+/*   Updated: 2024/05/19 22:14:13 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ long long	the_time(void)
 	struct timeval	time_;
 
 	gettimeofday(&time_, NULL);
-	return (time_.tv_sec * 1000LL + time_.tv_usec / 1000);
+	return (time_.tv_sec * 1000 + time_.tv_usec / 1000);
 }
 
 void print_msg(int flag, t_philo *philo)
