@@ -6,7 +6,7 @@
 /*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:33 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/18 18:44:24 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/19 09:44:05 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ typedef struct s_philo
 	pthread_t	thread_philo;
 	int	id;
 	t_data		*data;
-	t_fork		first_fork;
-	t_fork		second_fork;
+	t_fork		*first_fork;
+	t_fork		*second_fork;
 } t_philo;
 
 long		ft_atoi(char *str);
