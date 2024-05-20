@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
+/*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:01 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/20 16:48:38 by useraccount      ###   ########.fr       */
+/*   Updated: 2024/05/20 17:12:08 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void monitoring(t_philo *philo)
 {
-    if (philo->data->time_to_die < philo->time_to_last_eat)
+    long curent_time = the_time();
+    if (philo->data->time_to_die < curent_time - philo->time_to_last_eat)
     {
         print_msg(3, philo);
         exit(0);
@@ -25,7 +26,6 @@ void *philosophers(t_philo *philo)
 {
     while (1)
     {
-        monitoring(philo);
         long long time =  the_time() - philo->data->start_time;
         thinking(philo);
         pthread_mutex_lock(&philo->first_fork->forks);
@@ -39,7 +39,6 @@ void *philosophers(t_philo *philo)
         pthread_mutex_unlock(&philo->first_fork->forks);
         sleping(philo);
     }
-    
     return(NULL);
 }
 
@@ -104,7 +103,11 @@ int main(int argc, char **argv)
         pthread_create(&philosophers_threads[i], NULL, (void *)philosophers, &philo[i]);
 		i++;
 	}
+    while (1)
+        monitoring(philo);
+    
 	 i = 0;
+     
 	 while (i < data.number_of_philosophers)
 	 {
         pthread_join(philosophers_threads[i], NULL);
