@@ -6,7 +6,7 @@
 /*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:01 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/20 14:13:53 by useraccount      ###   ########.fr       */
+/*   Updated: 2024/05/20 14:18:59 by useraccount      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void *philosophers(t_philo *philo)
     while (1)
     {
         long long time =  the_time() - philo->data->start_time;
+        thinking(philo);
         pthread_mutex_lock(&philo->first_fork->forks);
         print_msg(0, philo);
         pthread_mutex_lock(&philo->second_fork->forks);
