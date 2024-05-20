@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:01 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/19 22:30:03 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/20 14:13:53 by useraccount      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,20 @@
 
 void *philosophers(t_philo *philo)
 {
-    long long time =  the_time() - philo->data->start_time;
-
-    pthread_mutex_lock(&philo->first_fork->forks);
-	printf("%lld\t%ld has taken a fork \n",the_time() - philo->data->start_time , philo->id);
-    // print_msg(0, philo);
-    pthread_mutex_lock(&philo->second_fork->forks);
-	printf("%lld\t%ld has taken a fork \n",the_time() - philo->data->start_time , philo->id);
-    // print_msg(0, philo);
-    // print_msg(4, philo);
-	printf("%lld\t%ld is eating \n",the_time() - philo->data->start_time , philo->id);	
-    usleep(philo->data->time_to_eat * 1000);
-    pthread_mutex_unlock(&philo->second_fork->forks);
-    pthread_mutex_unlock(&philo->first_fork->forks);
-    // sleping(philo);
-    // thinking(philo);
+    while (1)
+    {
+        long long time =  the_time() - philo->data->start_time;
+        pthread_mutex_lock(&philo->first_fork->forks);
+        print_msg(0, philo);
+        pthread_mutex_lock(&philo->second_fork->forks);
+        print_msg(0, philo);
+        print_msg(4, philo);	
+        ft_usleep(philo->data->time_to_eat);
+        pthread_mutex_unlock(&philo->second_fork->forks);
+        pthread_mutex_unlock(&philo->first_fork->forks);
+        sleping(philo);
+    }
+    
     return(NULL);
 }
 
@@ -52,7 +51,6 @@ int main(int argc, char **argv)
         return 1;
     }
 
-    // Initialize forks
  	while (i < data.number_of_philosophers)
 	{
         pthread_mutex_init(&forks[i].forks, NULL);
@@ -63,53 +61,31 @@ int main(int argc, char **argv)
     pthread_t philosophers_threads[data.number_of_philosophers];
     t_philo philo[data.number_of_philosophers];
 
-    // Assign forks to philosophers
-    // while (i < data.number_of_philosophers)
-    // {
-    //     philo[i].id = i ;
-    //     philo[i].data = &data;
-    //     if (philo[i].id == 0)
-    //     {
-    //         philo[i].first_fork = &forks[i];
-    //         philo[i].second_fork = &forks[philo->data->number_of_philosophers];
-    //     }
-    //     else if (philo[i].id % 2 != 0)
-    //     {
-    //         philo[i].first_fork = &forks[i + 1];
-    //         philo[i].second_fork = &forks[i];
-    //     }
-    //     else if (philo[i].id % 2 == 0)
-    //     {
-    //         philo[i].first_fork = &forks[i];
-    //         philo[i].second_fork = &forks[i + 1];
-    //     }
-    //     i++;
-    // }
-    for (int j = 0; j < data.number_of_philosophers; j++) 
+    i = 0;
+    while (i < data.number_of_philosophers)
     {
-        philo[j].id = j ;
-        philo[j].data = &data;
+        philo[i].id = i ;
+        philo[i].data = &data;
 
-        if (philo[j].id == 0)
+        if (philo[i].id == 0)
         {
-            philo[j].first_fork = &forks[0];
-            philo[j].second_fork = &forks[philo->data->number_of_philosophers - 1];
+            philo[i].first_fork = &forks[0];
+            philo[i].second_fork = &forks[philo->data->number_of_philosophers - 1];
         }
-        else if  (philo[j].id % 2)
+        else if  (philo[i].id % 2)
         {
-            philo[j].first_fork = &forks[j - 1];
-            philo[j].second_fork = &forks[j];
+            philo[i].first_fork = &forks[i - 1];
+            philo[i].second_fork = &forks[i];
         }
-        else if (philo[j].id % 2 == 0)
+        else if (philo[i].id % 2 == 0)
         {
-            philo[j].first_fork = &forks[j];
-            philo[j].second_fork = &forks[j - 1];
+            philo[i].first_fork = &forks[i];
+            philo[i].second_fork = &forks[i - 1];
         }
-
+        i++;
     }
+    
     data.start_time = the_time();
-
-    // Create philosopher threads
     i = 0;
  	while (i < data.number_of_philosophers)
 	{
@@ -122,8 +98,6 @@ int main(int argc, char **argv)
         pthread_join(philosophers_threads[i], NULL);
 		i++;
 	 }
-
-    // Destroy mutexes and free memory
     for (int i = 0; i < data.number_of_philosophers; i++) {
         pthread_mutex_destroy(&forks[i].forks);
     }

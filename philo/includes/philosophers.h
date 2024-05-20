@@ -6,7 +6,7 @@
 /*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:33 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/19 18:10:57 by useraccount      ###   ########.fr       */
+/*   Updated: 2024/05/20 09:59:38 by useraccount      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ long long	the_time(void);
 long		ft_atoi(char *str);
 bool		cheack(t_data *data, char **av);
 void print_msg(int flag, t_philo *philo);
-void eating(t_philo *philo) ;
+void ft_usleep(long time);
 
 
 
