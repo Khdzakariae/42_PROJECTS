@@ -6,7 +6,7 @@
 /*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 18:41:23 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/20 14:08:03 by useraccount      ###   ########.fr       */
+/*   Updated: 2024/05/20 16:44:34 by useraccount      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void print_msg(int flag, t_philo *philo)
 	else if (flag == 2)
 		printf("%lld\t%ld is thinking\n",time , philo->id);
 	else if (flag == 3)
-		printf("%lld\t%ld died\n",time , philo->id);	
+		printf("%lld\t%ld die\n",time , philo->id);	
 	else if (flag == 4)
 		printf("%lld\t%ld is eating\n",time , philo->id);	
 		

@@ -6,16 +6,26 @@
 /*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:01 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/20 14:18:59 by useraccount      ###   ########.fr       */
+/*   Updated: 2024/05/20 16:48:38 by useraccount      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/philosophers.h"
 
+void monitoring(t_philo *philo)
+{
+    if (philo->data->time_to_die < philo->time_to_last_eat)
+    {
+        print_msg(3, philo);
+        exit(0);
+    }
+}
+
 void *philosophers(t_philo *philo)
 {
     while (1)
     {
+        monitoring(philo);
         long long time =  the_time() - philo->data->start_time;
         thinking(philo);
         pthread_mutex_lock(&philo->first_fork->forks);
@@ -24,6 +34,7 @@ void *philosophers(t_philo *philo)
         print_msg(0, philo);
         print_msg(4, philo);	
         ft_usleep(philo->data->time_to_eat);
+        philo->time_to_last_eat = the_time();
         pthread_mutex_unlock(&philo->second_fork->forks);
         pthread_mutex_unlock(&philo->first_fork->forks);
         sleping(philo);

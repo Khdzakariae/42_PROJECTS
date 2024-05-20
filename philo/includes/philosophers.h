@@ -6,7 +6,7 @@
 /*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:33 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/20 09:59:38 by useraccount      ###   ########.fr       */
+/*   Updated: 2024/05/20 16:34:55 by useraccount      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct s_philo
 	t_data		*data;
 	t_fork		*first_fork;
 	t_fork		*second_fork;
+	long	time_to_last_eat;
 } t_philo;
 
 void sleping(t_philo *philo);
