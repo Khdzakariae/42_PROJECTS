@@ -10,7 +10,7 @@ all: $(NAME)
 
 
 $(NAME): $(SRC_PHILO)
-	@cc -fsanitize=address -g3 $^  $(FLAGS) -o philo
+	@cc  $^  $(FLAGS) -o philo
 
 clean:
 	@echo "clean [ ✅ ]"

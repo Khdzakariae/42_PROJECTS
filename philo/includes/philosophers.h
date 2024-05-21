@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
+/*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:33 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/20 16:34:55 by useraccount      ###   ########.fr       */
+/*   Updated: 2024/05/21 18:44:27 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,17 @@ typedef struct s_philo
 	t_fork		*first_fork;
 	t_fork		*second_fork;
 	long	time_to_last_eat;
+	pthread_mutex_t time_mutex;
 } t_philo;
 
 void sleping(t_philo *philo);
 void thinking(t_philo *philo);
-long long	the_time(void);
+long	the_time(void);
 long		ft_atoi(char *str);
 bool		cheack(t_data *data, char **av);
-void print_msg(int flag, t_philo *philo);
 void ft_usleep(long time);
+long 	start_time(bool init);
+void print_msg(int flag, t_philo *philo, bool flage);
 
 
 

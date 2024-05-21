@@ -1,0 +1,20 @@
+    // while (1)
+    // {
+    //     i = 0;
+    //     while (i < data.number_of_philosophers)
+    //     {
+    //         puts("++++++++++++++++++");
+    //         printf("tyhe i is %d\n", i);
+    //         puts("++++++++++++++++++");
+    //         long curent_time = the_time();
+    //         if (philo[i].data->time_to_die <= curent_time - philo[i].time_to_last_eat)
+    //         {
+    //             printf("time to long  is |%ld|\n",curent_time - philo[i].time_to_last_eat );
+    //             printf("time to eat  is |%ld|\n",philo[i].time_to_last_eat);
+                
+    //             print_msg(3, philo);
+    //             exit(0);
+    //         }
+    //         i++;
+    //     }
+    //  }
