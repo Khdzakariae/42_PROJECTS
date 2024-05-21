@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 18:41:23 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/21 18:44:57 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/21 20:26:20 by useraccount      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,38 +34,36 @@ long	the_time(void)
 
 void print_msg(int flag, t_philo *philo, bool flage)
 {
-	long long time =  the_time() - philo->data->start_time;
+    long long time = the_time() - philo->data->start_time;
 
-	if (flage == true)
-	{
-		if (flag == 0)
-			printf("%lld\t%ld has taken a fork\n",time , philo->id);
-		else if (flag == 1)
-			printf("%lld\t%ld is sleeping\n",time , philo->id);
-		else if (flag == 2)
-			printf("%lld\t%ld is thinking\n",time , philo->id);
-		else if (flag == 4)
-		printf("%lld\t%ld is eating\n",time , philo->id);	
-	}
-	else if (flage == false)
-		printf("%lld\t%ld die\n",time , philo->id);	
+    if (flage == true)
+    {
+        if (flag == 0)
+            printf("%lld\t%ld has taken a fork\n", time, philo->id);
+        else if (flag == 1)
+            printf("%lld\t%ld is sleeping\n", time, philo->id);
+        else if (flag == 2)
+            printf("%lld\t%ld is thinking\n", time, philo->id);
+        else if (flag == 4)
+            printf("%lld\t%ld is eating\n", time, philo->id);
+    }
+    else if (flage == false)
+        printf("%lld\t%ld died\n", time, philo->id);	
 }
-
-void ft_usleep(long time)
+void ft_usleep(long time, t_data *data)
 {
-	long  current_time = the_time();
-	while (1)
-	{
-		if ((the_time() - current_time) >= time)
-			break;
-		usleep(10);
-	}
+    long current_time = the_time();
+    while (!data->philosopher_died)
+    {
+        if ((the_time() - current_time) >= time)
+            break;
+        usleep(10);
+    }
 }
-
 void sleping(t_philo *philo)
 {
-	print_msg(1, philo, true);
-	ft_usleep(philo->data->time_to_sleep);
+    print_msg(1, philo, true);
+    ft_usleep(philo->data->time_to_sleep, philo->data);
 }
 
 void thinking(t_philo *philo)

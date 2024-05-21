@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:33 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/21 18:44:27 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/21 20:26:40 by useraccount      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_list
 	long	time_to_eat;
 	long	time_to_sleep;
 	long long  start_time;
+	bool philosopher_died;
 }			t_data;
 
 
@@ -55,7 +56,7 @@ void thinking(t_philo *philo);
 long	the_time(void);
 long		ft_atoi(char *str);
 bool		cheack(t_data *data, char **av);
-void ft_usleep(long time);
+void ft_usleep(long time, t_data *data);
 long 	start_time(bool init);
 void print_msg(int flag, t_philo *philo, bool flage);
 
