@@ -6,7 +6,7 @@
 /*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 18:41:23 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/22 12:08:58 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:24:45 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ void print_msg(int flag, t_philo *philo, bool flage)
     if (philo->data->philosopher_died == false)
     {
         if (flag == 0)
-            printf("%lld\t%ld has taken a fork\n", time, philo->id);
+            printf("%lld\t%ld has taken a fork\n", time, philo->id + 1);
         else if (flag == 1)
-            printf("%lld\t%ld is sleeping\n", time, philo->id);
+            printf("%lld\t%ld is sleeping\n", time, philo->id + 1);
         else if (flag == 2)
-            printf("%lld\t%ld is thinking\n", time, philo->id);
+            printf("%lld\t%ld is thinking\n", time, philo->id + 1);
         else if (flag == 4)
-            printf("%lld\t%ld is eating\n", time, philo->id);
+            printf("%lld\t%ld is eating\n", time, philo->id + 1);
     }
     else if (philo->data->philosopher_died == true)
     {

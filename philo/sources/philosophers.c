@@ -6,7 +6,7 @@
 /*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:01 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/22 12:01:53 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:52:38 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ t_philo* initialize_philosophers(t_data *data, t_fork *forks)
     while (i < data->number_of_philosophers) 
     {
         philos[i].id = i;
-        
         philos[i].data = data;
         philos[i].time_to_last_eat = 0;
         philos[i].data->philosopher_died = false;
@@ -70,7 +69,7 @@ t_philo* initialize_philosophers(t_data *data, t_fork *forks)
             philos[i].first_fork = &forks[0];
             philos[i].second_fork = &forks[data->number_of_philosophers - 1];
         } 
-        else if (i % 2) 
+        else if (i % 2)
         {
             philos[i].first_fork = &forks[i - 1];
             philos[i].second_fork = &forks[i];
@@ -97,7 +96,6 @@ void monitoring(t_philo *philos)
             long current_time = the_time();
             if (philos[i].data->time_to_die <= current_time - philos[i].time_to_last_eat) 
             {
-                printf("curent time |%ld|\n", current_time);
                 pthread_mutex_unlock(&philos[i].time_mutex);
                 print_msg(3, &philos[i], false);
                 philos->data->philosopher_died = true;
@@ -108,7 +106,7 @@ void monitoring(t_philo *philos)
         }
         if (philos->data->philosopher_died)
             break;
-        usleep(1000);
+        usleep(20);
     }
 }
 
@@ -177,7 +175,7 @@ int main(int argc, char **argv)
 
     if (check_arguments(argc, argv, &data) != 0) 
         return 1;
-    data.philosopher_died = false;
+
     forks = initialize_forks(data.number_of_philosophers);
     if (forks == NULL) 
         return 1;
