@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:01 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/22 16:42:15 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:58:42 by useraccount      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,17 +96,16 @@ bool monitoring(t_philo *philos)
             long current_time = the_time();
             if (philos[i].data->time_to_die < current_time - philos[i].time_to_last_eat) 
             {
-                pthread_mutex_unlock(&philos[i].time_mutex);
-                print_msg(3, &philos[i], false);
                 philos->data->philosopher_died = true;
-                exit(4);
+                print_msg(3, &philos[i], false);
+                // ft_usleep(10, philos->data);
                 return(false);
             } 
-            else 
+            
                 pthread_mutex_unlock(&philos[i].time_mutex);
         }
-        if (philos->data->philosopher_died)
-            break;
+        // if (philos->data->philosopher_died)
+        //     break;
     }
     return(true);
 }

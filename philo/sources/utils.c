@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 18:41:23 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/22 16:45:10 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:59:00 by useraccount      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ long	the_time(void)
 
 void print_msg(int flag, t_philo *philo, bool flage)
 {
-
-    long long time = the_time() - philo->data->start_time;
     pthread_mutex_lock(&philo->data->print_mutex);
+    long long time = the_time() - philo->data->start_time;
     if (philo->data->philosopher_died == true)
     {
+        // puts("------");
+        // ft_usleep(10, philo->data);
         printf("%lld\t%ld died\n", time, philo->id + 1);
         return;
     }
