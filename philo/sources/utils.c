@@ -6,7 +6,7 @@
 /*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 18:41:23 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/22 13:24:45 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/22 16:45:10 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,26 +35,24 @@ long	the_time(void)
 
 void print_msg(int flag, t_philo *philo, bool flage)
 {
-    long long time = the_time() - philo->data->start_time;
 
+    long long time = the_time() - philo->data->start_time;
     pthread_mutex_lock(&philo->data->print_mutex);
-    if (philo->data->philosopher_died == false)
+    if (philo->data->philosopher_died == true)
     {
-        if (flag == 0)
-            printf("%lld\t%ld has taken a fork\n", time, philo->id + 1);
-        else if (flag == 1)
-            printf("%lld\t%ld is sleeping\n", time, philo->id + 1);
-        else if (flag == 2)
-            printf("%lld\t%ld is thinking\n", time, philo->id + 1);
-        else if (flag == 4)
-            printf("%lld\t%ld is eating\n", time, philo->id + 1);
-    }
-    else if (philo->data->philosopher_died == true)
-    {
-        printf("%lld\t%ld died\n", time, philo->id);
+        printf("%lld\t%ld died\n", time, philo->id + 1);
         return;
     }
+    if (flag == 0)
+        printf("%lld\t%ld has taken a fork\n", time, philo->id + 1);
+    else if (flag == 1)
+        printf("%lld\t%ld is sleeping\n", time, philo->id + 1);
+    else if (flag == 2)
+        printf("%lld\t%ld is thinking\n", time, philo->id + 1);
+    else if (flag == 4)
+        printf("%lld\t%ld is eating\n", time, philo->id + 1);
     pthread_mutex_unlock(&philo->data->print_mutex);
+
 }
 
 

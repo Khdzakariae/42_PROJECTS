@@ -6,7 +6,7 @@
 /*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:01 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/22 13:52:38 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/22 16:42:15 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_philo* initialize_philosophers(t_data *data, t_fork *forks)
     return philos;
 }
 
-void monitoring(t_philo *philos)
+bool monitoring(t_philo *philos)
 {
     int i = 0;
     while (1) 
@@ -94,20 +94,21 @@ void monitoring(t_philo *philos)
         {
             pthread_mutex_lock(&philos[i].time_mutex);
             long current_time = the_time();
-            if (philos[i].data->time_to_die <= current_time - philos[i].time_to_last_eat) 
+            if (philos[i].data->time_to_die < current_time - philos[i].time_to_last_eat) 
             {
                 pthread_mutex_unlock(&philos[i].time_mutex);
                 print_msg(3, &philos[i], false);
                 philos->data->philosopher_died = true;
-                exit(10);
+                exit(4);
+                return(false);
             } 
             else 
                 pthread_mutex_unlock(&philos[i].time_mutex);
         }
         if (philos->data->philosopher_died)
             break;
-        usleep(20);
     }
+    return(true);
 }
 
 void *philosophers(void *arg)
@@ -133,7 +134,7 @@ void *philosophers(void *arg)
 }
 
 
-void start_simulation(t_data *data, t_philo *philos) 
+bool start_simulation(t_data *data, t_philo *philos) 
 {
     int i = 0;
     start_time(true);
@@ -144,12 +145,14 @@ void start_simulation(t_data *data, t_philo *philos)
         pthread_create(&philos[i].thread_philo, NULL, philosophers, &philos[i]);
         i++;
     }
-    monitoring(philos);
+    if  (monitoring(philos) == false);
+        return(false);
     while (i < data->number_of_philosophers) 
     {
         pthread_join(philos[i].thread_philo, NULL);
         i++;
     }
+    return(true);
 }
 
 
@@ -185,7 +188,11 @@ int main(int argc, char **argv)
         free(forks);
         return 1;
     }
-    start_simulation(&data, philos);
+    if (start_simulation(&data, philos) == false);
+    {
+        cleanup(forks, philos, data.number_of_philosophers);
+        return(1);
+    }
     cleanup(forks, philos, data.number_of_philosophers);
     return 0;
 }
