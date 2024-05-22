@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
+/*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 18:41:23 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/21 20:26:20 by useraccount      ###   ########.fr       */
+/*   Updated: 2024/05/22 12:02:48 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ long	the_time(void)
 	return ((long)(time.tv_sec * 1000 + time.tv_usec / 1000) - start);
 }
 
+
 void print_msg(int flag, t_philo *philo, bool flage)
 {
     long long time = the_time() - philo->data->start_time;
 
-    if (flage == true)
+    pthread_mutex_lock(&philo->data->print_mutex);
+    if (philo->data->philosopher_died == false)
     {
         if (flag == 0)
             printf("%lld\t%ld has taken a fork\n", time, philo->id);
@@ -47,8 +49,13 @@ void print_msg(int flag, t_philo *philo, bool flage)
         else if (flag == 4)
             printf("%lld\t%ld is eating\n", time, philo->id);
     }
-    else if (flage == false)
-        printf("%lld\t%ld died\n", time, philo->id);	
+    else if (philo->data->philosopher_died == true)
+    {
+        printf("%lld\t%ld died\n", time, philo->id);
+        return;
+    }
+    pthread_mutex_unlock(&philo->data->print_mutex);
+    
 }
 void ft_usleep(long time, t_data *data)
 {
