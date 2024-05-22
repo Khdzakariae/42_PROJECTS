@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philosophers.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: useraccount <useraccount@student.42.fr>    +#+  +:+       +#+        */
+/*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:46:01 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/21 21:03:46 by useraccount      ###   ########.fr       */
+/*   Updated: 2024/05/22 12:01:53 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,14 @@ t_philo* initialize_philosophers(t_data *data, t_fork *forks)
         printf("Error: Memory allocation failed\n");
         return NULL;
     }
-
+    pthread_mutex_init(&data->print_mutex, NULL);
     while (i < data->number_of_philosophers) 
     {
         philos[i].id = i;
+        
         philos[i].data = data;
         philos[i].time_to_last_eat = 0;
+        philos[i].data->philosopher_died = false;
         pthread_mutex_init(&philos[i].time_mutex, NULL);
         if (i == 0) 
         {
