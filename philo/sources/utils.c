@@ -6,7 +6,7 @@
 /*   By: zel-khad <zel-khad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/15 18:41:23 by zel-khad          #+#    #+#             */
-/*   Updated: 2024/05/22 12:02:48 by zel-khad         ###   ########.fr       */
+/*   Updated: 2024/05/22 12:08:58 by zel-khad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,10 @@ void print_msg(int flag, t_philo *philo, bool flage)
         return;
     }
     pthread_mutex_unlock(&philo->data->print_mutex);
-    
 }
+
+
+
 void ft_usleep(long time, t_data *data)
 {
     long current_time = the_time();
